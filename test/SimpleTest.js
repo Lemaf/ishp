@@ -2,9 +2,24 @@ var expect = require('chai').expect;
 
 var resolve = require('./util').resolve;
 
-var Shapefile = require('../index');
+var Shapefile = require('../ShapeFile');
 
 describe('Shapefile', function() {
+
+	var geometry;
+	before(function() {
+
+		var factory = new jsts.geom.GeometryFactory(jsts.geom.PrecisionModel.FLOATING);
+
+		geometry = (new jsts.io.GeoJSONReader(factory)).read({
+			type: 'Polygon',
+			coordinates: [
+				[
+					[]
+				]
+			]
+		});
+	});
 
 	describe('should', function() {
 
@@ -15,7 +30,7 @@ describe('Shapefile', function() {
 		});
 
 		it('throws a exception', function(done) {
-			new Shapefile('not-found.shp').query(null).then(
+			new Shapefile('not-found.shp').intersects(null).then(
 				function() {
 
 				},

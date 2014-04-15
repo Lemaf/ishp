@@ -1,5 +1,5 @@
 var Shp = require('./lib/Shp');
-var Qix = require('./lib/Qix');
+var Qix = require('./lib/qix/Query');
 var Dbf = require('./lib/Dbf');
 var jsts = require('jsts');
 

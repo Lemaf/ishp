@@ -1,28 +1,45 @@
 {
-	"name": "shp.js",
-
-	"authors": [
-		"rthoth <ronaldo.asilva@gmail.com>"
-	],
-
-	"repository": {
-		"type": "git",
-		"url": "https://github.com/rthoth/shp.js.git"
-	},
-
-	"scripts": {
-		"test": "node_modules/.bin/mocha --recursive --report spec test/"
-	},
-
-	"dependencies": {
-		"fs-ext": "~0.3",
-		"jsts": "~0.13",
-		"proj4": "~2.1",
-		"promised-io": "~0.3"
-	},
-
-	"devDependencies": {
-		"mocha": "~1.18",
-		"chai": "~1.9"
-	}
+  "name": "shp.js",
+  "version": "0.0.0",
+  "description": "Nothing to say",
+  "main": "ShapeFile.js",
+ 
+  "directories": {
+    "test": "test"
+  },
+ 
+  "dependencies": {
+    "fs-ext": "~0.3.2",
+    "promised-io": "~0.3.4",
+    "jsts": "~0.13.4",
+    "proj4": "~2.1.2"
+  },
+ 
+  "devDependencies": {
+    "chai": "~1.9.1",
+    "mocha": "~1.18.2"
+  },
+ 
+  "scripts": {
+    "test": "mocha"
+  },
+ 
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/rthoth/shp.js.git"
+  },
+ 
+  "keywords": [
+    "shp",
+    "qix"
+  ],
+ 
+  "author": "rthoth <ronaldo.asilva@gmail.com>",
+ 
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/rthoth/shp.js/issues"
+  },
+ 
+  "homepage": "https://github.com/rthoth/shp.js"
 }
