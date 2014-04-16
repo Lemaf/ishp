@@ -1,3 +1,4 @@
+
 var download = require('download');
 var url = require('url');
 var path = require('path');
@@ -11,9 +12,9 @@ module.exports = function(urls, dest, extract) {
 
 	urls = Array.isArray(urls) ? urls : [urls];
 
-	urls = urls.filter(function(url) {
+	urls = urls.filter(function(downloadURL) {
 
-		var basename = path.basename(url);
+		var basename = path.basename(url.parse(downloadURL).pathname);
 
 		return !fs.existsSync(path.join(dest, basename));
 
