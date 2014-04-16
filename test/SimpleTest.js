@@ -8,9 +8,17 @@ var Shapefile = require('../ShapeFile');
 describe('Shapefile', function() {
 
 	var geometry;
-	before(function() {
 
-		var factory = new jsts.geom.GeometryFactory(jsts.geom.PrecisionModel.FLOATING);
+	this.timeout(0);
+
+	before(function(done) {
+
+		download(['http://localhost:8080/br.sp.zip', 'http://localhost:8080/br.mg.zip'], resolve('data'), true)
+		.on('ready', function() {
+			done();
+		});
+
+		/*var factory = new jsts.geom.GeometryFactory(jsts.geom.PrecisionModel.FLOATING);
 
 		geometry = (new jsts.io.GeoJSONReader(factory)).read({
 			type: 'Polygon',
@@ -19,7 +27,7 @@ describe('Shapefile', function() {
 					[]
 				]
 			]
-		});
+		});*/
 	});
 
 	describe('should', function() {

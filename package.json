@@ -18,7 +18,9 @@
   "devDependencies": {
     "chai": "~1.9.1",
     "mocha": "~1.18.2",
-    "download": "~0.1.15"
+    "download": "~0.1.15",
+    "each-async": "^0.1.1",
+    "decompress": "^0.2.0"
   },
  
   "scripts": {
