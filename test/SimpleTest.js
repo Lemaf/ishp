@@ -1,6 +1,7 @@
 var expect = require('chai').expect;
 
 var resolve = require('./util').resolve;
+var download = require('./download');
 
 var Shapefile = require('../ShapeFile');
 

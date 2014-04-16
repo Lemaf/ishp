@@ -8,30 +8,43 @@ var fs = require('fs');
 
 var ShapeFile = module.exports = function(path) {
 
-	['Qix', 'Dbf', 'Shp', 'Shx'].forEach(function(ext) {
-		this['_pathTo' + ext] = path.replace(/[^.]+$/, ext.toLowerCase());
-	}, this);
+	this._baseName = path.replace(/[^.]$/, '');
 
+};
+
+var INTERSECTS_DEFAULT_OPTIONS = {
+	data: true,
+	geometry: true
 };
 
 ShapeFile.prototype = {
 
-	intersects: function(geometry) {
+	intersects: function(geometry, options, callback) {
 
-		var envelope = (!(geometry instanceof jsts.geom.Envelope)) ? geometry.getEnvelopeInternal() : geometry;
+		if (!callback) {
+			callback = options;
 
-		var qix = new Qix(this._pathToQix);
+			options = INTERSECTS_DEFAULT_OPTIONS;
+		}
 
-		qix.query(envelope).then(
-			
-			function(ids) {
+		if (options.data && options.geometry) {
 
-			},
+			var envelope = (geometry instanceof jsts.geom.Envelope) ? geometry : geometry.getEnvelopeInternal();
 
-			function() {
+			var qixCallback, self = this;
 
+			if (options.geometry) {
+
+				qixCallback = function(err, index) {
+					console.log(index);
+				};
 			}
-		);
+
+			var qix = new Qix(this._baseName);
+			qix.query(envelope, qixCallback);
+
+		} else
+			callback(new Error('Invalid options!'), null);
 	}
 
 };
