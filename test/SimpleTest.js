@@ -36,13 +36,15 @@ describe('Shapefile', function() {
 		describe('should', function() {
 
 			it('intersects Lavras/MG', function(done) {
-				var envelope = newEnvelope(-45.19013,-44.91423,-21.14459,-21.01053);
+				var envelope = newEnvelope(-45.21498,-44.60901,-21.38859,-20.9649);
 
 				var shapefile = new ShapeFile(resolve('data/br.mg/br.mg.shp'));
 
 				shapefile.intersects(factory.toGeometry(envelope), function(err, feature) {
 					expect(err, 'Unexpected error').to.be.null;
 					expect(feature, 'Feature').to.not.be.null;
+
+					console.log(feature);
 					done();
 				});
 			});

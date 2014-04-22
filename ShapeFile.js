@@ -30,8 +30,16 @@ ShapeFile.prototype = {
 
 		var self = this;
 
+		var indexes = [];
+
 		var qixCallback = function(err, index) {
-			callback(err, null);
+
+			console.log(indexes);
+
+			if (index !== null)
+				indexes.push(index);
+			else
+				callback(err, indexes.length ? indexes: null);
 		};
 
 		var qix = new Qix(this._baseName + '.qix');
