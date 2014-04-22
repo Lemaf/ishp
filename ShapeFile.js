@@ -1,14 +1,14 @@
 var Shp = require('./lib/Shp');
-var Qix = require('./lib/qix/Query');
+var Qix = require('./lib/Qix');
 var Dbf = require('./lib/Dbf');
 var jsts = require('jsts');
 
+var path = require('path');
 
-var fs = require('fs');
 
-var ShapeFile = module.exports = function(path) {
+var ShapeFile = module.exports = function(fileName) {
 
-	this._baseName = path.replace(/[^.]$/, '');
+	this._baseName = path.normalize(fileName).replace(/\.shp$/i, '');
 
 };
 
@@ -23,28 +23,20 @@ ShapeFile.prototype = {
 
 		if (!callback) {
 			callback = options;
-
 			options = INTERSECTS_DEFAULT_OPTIONS;
 		}
 
-		if (options.data && options.geometry) {
+		var envelope = (!(geometry instanceof jsts.geom.Envelope)) ? geometry.getEnvelopeInternal() : geometry;
 
-			var envelope = (geometry instanceof jsts.geom.Envelope) ? geometry : geometry.getEnvelopeInternal();
+		var self = this;
 
-			var qixCallback, self = this;
+		var qixCallback = function(err, index) {
+			callback(err, null);
+		};
 
-			if (options.geometry) {
+		var qix = new Qix(this._baseName + '.qix');
+		qix.query(envelope, qixCallback);
 
-				qixCallback = function(err, index) {
-					console.log(index);
-				};
-			}
-
-			var qix = new Qix(this._baseName);
-			qix.query(envelope, qixCallback);
-
-		} else
-			callback(new Error('Invalid options!'), null);
 	}
 
 };

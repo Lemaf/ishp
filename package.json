@@ -9,10 +9,11 @@
   },
  
   "dependencies": {
-    "fs-ext": "~0.3.2",
-    "promised-io": "~0.3.4",
+    "graceful-fs": "~2.0",
     "jsts": "~0.13.4",
-    "proj4": "~2.1.2"
+    "proj4": "~2.1.2",
+    "promised-io": "~0.3.4",
+    "step": "~0.0"
   },
  
   "devDependencies": {

@@ -1,9 +1,10 @@
 var expect = require('chai').expect;
-
-var resolve = require('./util').resolve;
 var download = require('./download');
+var ShapeFile = require('../ShapeFile');
+var resolve = require('./util').resolve;
+var newEnvelope = require('./util').newEnvelope;
 
-var Shapefile = require('../ShapeFile');
+var factory;
 
 describe('Shapefile', function() {
 
@@ -18,7 +19,7 @@ describe('Shapefile', function() {
 			done();
 		});
 
-		var factory = new jsts.geom.GeometryFactory(new jsts.geom.PrecisionModel(jsts.geom.PrecisionModel.FLOATING));
+		factory = new jsts.geom.GeometryFactory(new jsts.geom.PrecisionModel(jsts.geom.PrecisionModel.FLOATING));
 
 		geometry = (new jsts.io.GeoJSONReader(factory)).read({
 			type: 'Polygon',
@@ -30,25 +31,24 @@ describe('Shapefile', function() {
 		});
 	});
 
-	describe('should', function() {
+	describe('br.mg.shp', function() {
 
-		it('ok', function() {
+		describe('should', function() {
 
-			expect(new Shapefile(resolve("data/br.sp.shp"))).to.exist;
+			it('intersects Lavras/MG', function(done) {
+				var envelope = newEnvelope(-45.19013,-44.91423,-21.14459,-21.01053);
 
-		});
+				var shapefile = new ShapeFile(resolve('data/br.mg/br.mg.shp'));
 
-		it('throws a exception', function(done) {
-			new Shapefile('not-found.shp').intersects(null).then(
-				function() {
-
-				},
-
-				function(error) {
+				shapefile.intersects(factory.toGeometry(envelope), function(err, feature) {
+					expect(err, 'Unexpected error').to.be.null;
+					expect(feature, 'Feature').to.not.be.null;
 					done();
-				}
-			);
+				});
+			});
+
 		});
+		
 	});
 
 });
