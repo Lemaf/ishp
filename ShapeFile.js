@@ -34,7 +34,8 @@ ShapeFile.prototype = {
 
 		var qixCallback = function(err, index) {
 
-			console.log(indexes);
+
+			console.log('\n\n-----> Found %s\n\n', index);
 
 			if (index !== null)
 				indexes.push(index);
