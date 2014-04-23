@@ -1,6 +1,8 @@
-var Shp = require('./lib/Shp');
-var Qix = require('./lib/Qix');
 var Dbf = require('./lib/Dbf');
+var Qix = require('./lib/Qix');
+var Shp = require('./lib/Shp');
+var Shx = require('./lib/Shx');
+var step = require('step');
 var jsts = require('jsts');
 
 var path = require('path');
@@ -32,19 +34,45 @@ ShapeFile.prototype = {
 
 		var indexes = [];
 
-		var qixCallback = function(err, index) {
-
-
-			console.log('\n\n-----> Found %s\n\n', index);
-
-			if (index !== null)
-				indexes.push(index);
-			else
-				callback(err, indexes.length ? indexes: null);
-		};
-
 		var qix = new Qix(this._baseName + '.qix');
-		qix.query(envelope, qixCallback);
+
+		var shp;
+		if (options.geometry) {
+
+			shp = new Shp(this._baseName + '.shp', new Shx(this._baseName + '.shx'));
+		}
+
+		var dbf;
+		if (options.data)
+			dbf = new Dbf(this._baseName + '.dbf');
+
+
+		qix.query(envelope, function(err, index) {
+			console.log('\n\n\n----------------%s\n\n\n', index);
+			if (!err) {
+				if (index !== null) {
+
+					step(
+						function() {
+							if (shp)
+								shp.get(index, this.parallel());
+							
+							if (dbf)
+								shp.get(index, this.parallel());
+							else
+								this();
+						},
+						function(err, geometry, record) {
+							console.log('err=%s, geometry=%s, record=%s', err, geometry, record);
+						}
+					);
+
+				} else
+					callback(null, null);
+			} else {
+				callback(err, null);
+			}
+		});
 
 	}
 
