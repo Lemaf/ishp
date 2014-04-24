@@ -4,14 +4,14 @@ var Shp = require('./lib/Shp');
 var Shx = require('./lib/Shx');
 var step = require('step');
 var jsts = require('jsts');
-
 var path = require('path');
 
 
-var ShapeFile = module.exports = function(fileName) {
+var ShapeFile = module.exports = function(fileName, jstsFactory) {
 
 	this._baseName = path.normalize(fileName).replace(/\.shp$/i, '');
 
+	this._jstsFactory = jstsFactory || new jsts.geom.GeometryFactory();
 };
 
 var INTERSECTS_DEFAULT_OPTIONS = {
@@ -39,7 +39,7 @@ ShapeFile.prototype = {
 		var shp;
 		if (options.geometry) {
 
-			shp = new Shp(this._baseName + '.shp', new Shx(this._baseName + '.shx'));
+			shp = new Shp(this._baseName + '.shp', this._jstsFactory, new Shx(this._baseName + '.shx'));
 		}
 
 		var dbf;
@@ -47,10 +47,12 @@ ShapeFile.prototype = {
 			dbf = new Dbf(this._baseName + '.dbf');
 
 
+		var count = 0;
 		qix.query(envelope, function(err, index) {
 			console.log('\n\n\n----------------%s\n\n\n', index);
 			if (!err) {
 				if (index !== null) {
+					count++;
 
 					step(
 						function() {
@@ -58,17 +60,27 @@ ShapeFile.prototype = {
 								shp.get(index, this.parallel());
 							
 							if (dbf)
-								shp.get(index, this.parallel());
+								dbf.get(index, this.parallel());
 							else
-								this();
+								process.nextTick(this);
 						},
 						function(err, geometry, record) {
+							count--;
 							console.log('err=%s, geometry=%s, record=%s', err, geometry, record);
+
+
+							if (err)
+								console.log(err.stack);
+
+							if (!count)
+								callback(null, null);
 						}
 					);
 
-				} else
-					callback(null, null);
+				} else {
+					if (!count)
+						callback(null, null);
+				}
 			} else {
 				callback(err, null);
 			}
