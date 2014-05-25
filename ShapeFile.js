@@ -61,12 +61,12 @@ ShapeFile.prototype = {
 							
 							if (dbf)
 								dbf.get(index, this.parallel());
-							else
-								process.nextTick(this);
+							
+							process.nextTick(this.parallel());
 						},
 						function(err, geometry, record) {
 							count--;
-							console.log('err=%s, geometry=%s, record=%s', err, geometry, record);
+							console.log(record);
 
 
 							if (err)

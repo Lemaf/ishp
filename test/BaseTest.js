@@ -1,5 +1,5 @@
 var expect = require('chai').expect;
-var download = require('./download');
+var download = require('yadown');
 var ShapeFile = require('../ShapeFile');
 var resolve = require('./util').resolve;
 var newEnvelope = require('./util').newEnvelope;
@@ -18,8 +18,11 @@ describe('Shapefile', function() {
 			'https://copy.com/yzHc6aQO76ko/shp.js/br.sp.zip?download=1',
 			'https://copy.com/yzHc6aQO76ko/shp.js/br.mg.zip?download=1',
 			'https://copy.com/yzHc6aQO76ko/shp.js/br.zip?download=1'
-		], resolve('data'), true)
-		.on('ready', function() {
+		], resolve('data'), {
+			extract: true,
+			debug: true
+		})
+		.on('end', function() {
 			done();
 		});
 
