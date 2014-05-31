@@ -24,12 +24,12 @@ ishp uses qix quadtree, you can use [mapserver](http://mapserver.org/utilities/s
 
 ```idl
 Header {
-    signature: char[3] = {"S","Q","T"},
-    bOrder: char, // 0 - Native, 1 - Little Endian, 2 - Big Endian
-    version: char, // mapserver write 1
-    reserved: char[3], // mapserve use {0,0,0}
-    numShapes: int32,
-    maxDepth: int32
+    char[3] signature = {"S","Q","T"},
+    char bOrder,            // 0 - Native, 1 - Little Endian, 2 - Big Endian
+    char version,           // mapserver write 1
+    char[3] reserved,       // mapserve use {0,0,0}
+    int32 numShapes,
+    int32 maxDepth
 }
 ```
 
@@ -38,13 +38,13 @@ Header {
 
 ```idl
 Node {
-    offset: int32,
-    xmin: double,
-    ymin: double,
-    xmax: double,
-    ymax: double,
-    numShapes: int32,
-    ids: int32[numShapes],
-    numSubNodes: int32
+    int32 offset,
+    double xmin,
+    double ymin,
+    double xmax,
+    double ymax,
+    int32 numShapes,
+    int32[numShapes] ids,
+    int32 numSubNodes
 }
 ```
