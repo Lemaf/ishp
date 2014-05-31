@@ -22,7 +22,7 @@ ishp uses qix quadtree, you can use [mapserver](http://mapserver.org/utilities/s
 
 * Structure of qix quadtree file.
 
-```c
+```idl
 Header {
     signature: char[3] = {"S","Q","T"},
     bOrder: char, // 0 - Native, 1 - Little Endian, 2 - Big Endian
@@ -36,7 +36,7 @@ Header {
 
 * Structure of qix node (record)
 
-```c
+```idl
 Node {
     offset: int32,
     xmin: double,
