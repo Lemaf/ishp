@@ -20,16 +20,18 @@ ishp uses qix quadtree, you can use [mapserver](http://mapserver.org/utilities/s
 
 ## qix format (*NEW format*)
 
+* [Reference](https://github.com/mapserver/mapserver/blob/master/maptree.c)
+
 * Structure of qix quadtree file.
 
 ```c
 Header {
-    char[3] signature = {"S","Q","T"},
+    char signature[3] = {"S","Q","T"},
     char bOrder,            // 0 - Native, 1 - Little Endian, 2 - Big Endian
     char version,           // mapserver write 1
-    char[3] reserved,       // mapserve use {0,0,0}
-    int32 numShapes,
-    int32 maxDepth
+    char reserved[3],       // mapserve use {0,0,0}
+    int numShapes,
+    int maxDepth
 }
 ```
 
@@ -38,13 +40,14 @@ Header {
 
 ```c
 Node {
-    int32 offset,
+    int offset,
     double xmin,
     double ymin,
     double xmax,
     double ymax,
-    int32 numShapes,
-    int32[numShapes] ids,
-    int32 numSubNodes
+    int numShapes,
+    int ids[numShapes],
+    int numSubNodes
 }
 ```
+
