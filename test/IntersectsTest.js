@@ -1,5 +1,6 @@
 var download = require('./download'),
-context = require('./context');
+context = require('./context'),
+jsts = require('jsts');
 
 
 describe('ShapeFile', function() {
@@ -12,11 +13,16 @@ describe('ShapeFile', function() {
 		}
 	]));
 
+	// Sertãozinho - SP - BR: -47.88684,-47.86040,-21.08315,-21.05238
+
 	describe('intersects', function() {
 
 		context('br.sp.shp', 'Sertãozinho', function(shapeFile, done) {
 
-			done();
+			var envelope = new jsts.geom.Envelope(-47.88684,-47.86040,-21.08315,-21.05238);
+			shapeFile.intersects(envelope, function(err, feature) {
+				
+			});
 		});
 	});
 

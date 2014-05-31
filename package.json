@@ -32,15 +32,17 @@
     "quadtree"
   ],
 
-  "devDependencies": {
-    "download": "0.1.17",
-    "each-async": "0.1.3",
-    "mocha": "1.20.0"
-  },
-
   "dependencies": {
     "idbf": "0.0.0",
     "jsts": "0.13.4",
     "promise": "5.0.0"
+  },
+
+  "devDependencies": {
+    "chai": "1.9.1",
+    "download": "0.1.17",
+    "each-async": "0.1.3",
+    "mocha": "1.20.0",
+    "sinon-chai": "2.5.0"
   }
 }

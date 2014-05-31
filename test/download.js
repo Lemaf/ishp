@@ -22,7 +22,7 @@ module.exports = function(downloads) {
 			if (existsSync(path.join(dest, source.test)))
 				next();
 			else {
-				console.log('downloading %s', source.name);
+				console.log('downloading %s from %s', source.name, source.url);
 				download(source, dest, {extract: true})
 					.on('error', function(err) {
 						next(err);
