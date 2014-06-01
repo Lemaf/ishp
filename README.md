@@ -29,7 +29,7 @@ Header {
     char signature[3] = {"S","Q","T"},
     char bOrder,            // 0 - Native, 1 - Little Endian, 2 - Big Endian
     char version,           // mapserver write 1
-    char reserved[3],       // mapserve use {0,0,0}
+    char flags[3],       // mapserve use {0,0,0}
     int numShapes,
     int maxDepth
 }
