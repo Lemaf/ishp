@@ -1,6 +1,7 @@
 var download = require('./download'),
 context = require('./context'),
-jsts = require('jsts');
+jsts = require('jsts'),
+expect = require('chai').expect;
 
 
 describe('ShapeFile', function() {
@@ -21,6 +22,7 @@ describe('ShapeFile', function() {
 
 			var envelope = new jsts.geom.Envelope(-47.88684,-47.86040,-21.08315,-21.05238);
 			shapeFile.intersects(envelope, function(err, feature) {
+				expect(err).to.not.exist;
 			});
 		});
 	});
