@@ -34,8 +34,10 @@
 
   "dependencies": {
     "idbf": "0.0.0",
-    "jsts": "0.13.4",
-    "promise": "5.0.0"
+    "jsts": "~0.13.4",
+    "js-extend": "^0.0.2",
+    "nested-error-stacks": "0.0.3",
+    "promise": "^5.0.0"
   },
 
   "devDependencies": {
