@@ -22,7 +22,8 @@ describe('ShapeFile', function() {
 
 			var envelope = new jsts.geom.Envelope(-47.88684,-47.86040,-21.08315,-21.05238);
 			shapeFile.intersects(envelope, function(err, feature) {
-				expect(err).to.not.exist;
+				if (err)
+					throw err;
 			});
 		});
 	});
