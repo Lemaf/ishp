@@ -33,7 +33,10 @@ module.exports = function(downloads) {
 				;
 			}
 		}, function(err) {
-			done(err);
+			if (err)
+				done(err);
+			else
+				done();
 		});
 	};
 
