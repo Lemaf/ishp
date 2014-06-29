@@ -1,45 +1,68 @@
-var CallbackContext = require('../lib/CallbackContext');
-
 var chai = require('chai'),
-expect = chai.expect,
+download = require('./download'),
 sinon = require('sinon');
+
+var CallbackContext = require('../lib/CallbackContext');
 
 chai.use(require('sinon-chai'));
 
-require('vows').describe('CallbackContext')
-.addBatch({
-	'with a valid callback function': {
-		topic: function() {
-			return sinon.spy();
-		},
+var expect = chai.expect;
 
-		'should': {
-			topic: function(spy) {
-				return new CallbackContext(spy);
-			},
 
-			'invoke normaly': function(cbc) {
-				cbc.apply('A value test');
-			},
+function context(description, fn) {
 
-			'and' : {
-				topic: function(cbc, spy) {
-					return spy;
-				},
+	it(description, function() {
+		var spy = sinon.spy();
+		fn.call(this, new CallbackContext(spy), spy);
+	});
+}
 
-				'called once': function(spy) {
-					expect(spy).to.have.calledOnce;
-					if (true === false) {
+describe('CallbackContext', function() {
 
-					}
-				},
+	context('simple invoke', function(cbc, spy) {
 
-				'called with correct value': function(spy) {
-					expect(spy).to.have.calledWithExactly(null, 'A value test');
-				}
-			}
-		}
-	}
+		cbc.apply('Ok');
+		expect(spy).have.calledWith(null, 'Ok');
+	});
 
-})
-.export(module);
+	context('invoke, error and invoke', function(cbc, spy) {
+
+		cbc.apply('Another test');
+		expect(spy).have.calledWith(null, 'Another test');
+		
+		cbc.error(new Error('A super and unexpected error'));
+		expect(spy).have.calledWith(new Error('A super and unexpected error'));
+
+		cbc.apply('Woo hoo');
+		expect(spy).not.have.calledWith(null, 'Woo hoo');
+	});
+
+	it('invoke and throw error and call again', function() {
+		var error = new Error('A error');
+		var spy = sinon.spy(function(err, arg) {
+			throw error;
+		});
+
+		var cbc = new CallbackContext(spy);
+		cbc.apply('lol');
+
+		expect(spy).have.calledWith(null, 'lol');
+		expect(spy).have.thrown(error);
+
+		cbc.apply('Test');
+		expect(spy).have.calledWith(null, 'Test');
+
+	});
+
+	context('invoke, error, not invoke again', function(cbc, spy) {
+		cbc.apply(true);
+		expect(spy).have.calledWith(null, true);
+		var error = new Error('Internal Error');
+
+		cbc.error(error);
+		expect(spy).have.calledWith(error);
+
+		cbc.apply(false);
+		expect(spy).not.have.calledWith(null, false);
+	});
+});
