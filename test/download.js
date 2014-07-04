@@ -11,7 +11,7 @@ module.exports = function(downloads) {
 	if (!Array.isArray(downloads))
 		downloads = [downloads];
 
-
+	process.chdir(path.join(__dirname, 'data'));
 
 	return function(done) {
 
