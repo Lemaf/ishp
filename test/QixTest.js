@@ -46,6 +46,7 @@ describe('Qix', function() {
 
 	context('br.sp.qix', 'teste', function(qix, done) {
 
+		this.timeout(0);
 		var spy;
 		qix.query(envelope(-48.01596,-47.95535,-21.14624,-21.09490), spy = sinon.spy(fix(function(err, index) {
 			console.log('callCount =%d, index=%d', spy.callCount, index);
