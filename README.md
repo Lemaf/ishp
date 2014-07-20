@@ -4,7 +4,7 @@
 A spatial indexed (qix quadtree) Shapefile reader
 
 
-ishp uses qix quadtree, you can use [mapserver](http://mapserver.org/utilities/shptree.html) or [Quantum GIS](http://www.qgis.org/) to create a qix file.
+ishp uses qix quadtree, you can use [mapserver](http://mapserver.org/utilities/shptree.html) or [QGIS](http://www.qgis.org/) to create a qix file.
 
 
 ```js
@@ -29,7 +29,7 @@ Header {
     char signature[3] = {"S","Q","T"},
     char bOrder,            // 0 - Native, 1 - Little Endian, 2 - Big Endian
     char version,           // mapserver write 1
-    char flags[3],       // mapserve use {0,0,0}
+    char reserved[3],       // mapserve use {0,0,0}
     int numShapes,
     int maxDepth
 }
