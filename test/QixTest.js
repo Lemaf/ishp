@@ -50,7 +50,7 @@ describe('Qix', function() {
 		var spy;
 		qix.query(envelope(-48.01596,-47.95535,-21.14624,-21.09490), spy = sinon.spy(fix(function(err, index) {
 			console.log('callCount =%d, index=%d', spy.callCount, index);
-			if (spy.callCount >= 12) {
+			if (spy.callCount >= 162) {
 				//expect(spy).have.calledWith(null, 1);
 				done();
 			}

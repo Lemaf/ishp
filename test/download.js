@@ -11,6 +11,9 @@ module.exports = function(downloads) {
 	if (!Array.isArray(downloads))
 		downloads = [downloads];
 
+	if (!existsSync(path.join(__dirname, 'data')))
+		require('fs').mkdirSync(path.join(__dirname, 'data'));
+	
 	process.chdir(path.join(__dirname, 'data'));
 
 	return function(done) {
