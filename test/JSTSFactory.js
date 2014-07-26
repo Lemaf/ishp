@@ -15,3 +15,8 @@ for (var k in prototype) {
 	if (typeof prototype[k] === 'function')
 		exports[k] = mkProxy(prototype[k]);
 }
+
+
+exports.envelope = function(xmin, xmax, ymin, ymax) {
+	return new jsts.geom.Envelope(xmin, xmax, ymin, ymax);
+};
