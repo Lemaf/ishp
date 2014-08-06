@@ -29,13 +29,13 @@ describe('Qix', function() {
 		var spy;
 		qix.query(tc.factory.envelope(-48.01596,-47.95535,-21.14624,-21.09490), spy = tc.sinon.spy(tc.fix(function(err, index) {
 
-			expect(err).to.be.null;
-			expect(index).to.be.gt(0);
-
 			console.log('callCount = %d, index=%d', spy.callCount, index);
 
-			if (spy.callCount >= 12) {
+			if (spy.callCount >= 13) {
 				done();
+			} else {
+				expect(err).to.be.null;
+				expect(index).to.be.gt(0);
 			}
 		})));
 	});

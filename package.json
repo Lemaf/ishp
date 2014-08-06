@@ -33,7 +33,7 @@
   ],
 
   "dependencies": {
-    "idbf": "0.0.0",
+    "idbf": "*",
     "jsts": "~0.13.4",
     "js-extend": "^0.0.2",
     "nested-error-stacks": "0.0.3",
