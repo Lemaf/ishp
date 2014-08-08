@@ -1,18 +1,7 @@
 var tc = require('./testContext');
-var expect = tc.expect;
 
-function context(file, description, fn) {
-
-	var ShapeFile = require('../lib/ShapeFile');
-
-	var shapeFile = new ShapeFile(file);
-
-	it(description, function(done) {
-
-		fn.call(this, shapeFile, done);
-	});
-
-}
+var context = tc.shapeFileContext,
+expect = tc.expect;
 
 describe('On br.shp', function() {
 

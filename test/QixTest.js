@@ -1,21 +1,8 @@
 var tc = require('./testContext');
 
-var expect = tc.expect;
-
-var Qix = require('../lib/Qix');
-
-function asc(a, b) {
-	return a - b;
-}
-
-
-function context(file, description, fn) {
-	it(description, function(done) {
-		var qix = new Qix(file);
-
-		fn.call(this, qix, done);
-	});
-}
+var context = tc.qixContext,
+expect = tc.expect,
+asc = tc.asc;
 
 describe('Qix', function() {
 

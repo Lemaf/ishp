@@ -23,15 +23,60 @@ exports.download = download;
 exports.factory = factory;
 exports.sinon = sinon;
 
-exports.expect = function(target, mgs) {
-	if (target && target.stack) {
+exports.asc = function(a, b) { return a - b; };
 
-		if (mgs)
-			return chai.expect(target.stack, mgs);
+exports.callBackContext = function(description, fn) {
+	var CallbackContext = require('../lib/CallbackContext');
+	it(description, function() {
+		var spy = sinon.spy();
+		fn.call(this, new CallbackContext(spy), spy);
+	});
+};
 
-		return chai.expect(target.stack);
-	}
+exports.expect = function(target, msg) {
+
+	if (target && target.stack)
+		console.log(target.stack);
+
+	if (msg)
+		return chai.expect(target, msg);
+	else
+		return chai.expect(target);
+};
+
+exports.qixContext = function(file, description, fn) {
+
+	var Qix = require('../lib/Qix');
+
+	it(description, function(done) {
+		var qix = new Qix(file);
+
+		fn.call(this, qix, done);
+	});
+};
+
+exports.shpContext = function(file, description, fn) {
+
+	var Shx = require('../lib/Shx');
+	var Shp = require('../lib/Shp');
 
 
-	return mgs ? chai.expect(target, mgs) : chai.expect(target);
+	it(description, function(done) {
+		var shp = new Shp(file, new Shx(file.replace('.shp', '.shx')), factory);
+		
+		fn.call(this, shp, done);
+	});
+};
+
+exports.shapeFileContext = function(file, description, fn) {
+
+	var ShapeFile = require('../lib/ShapeFile');
+
+	var shapeFile = new ShapeFile(file);
+
+	it(description, function(done) {
+
+		fn.call(this, shapeFile, done);
+	});
+
 };

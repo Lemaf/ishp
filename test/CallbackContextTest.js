@@ -1,21 +1,9 @@
-var chai = require('chai'),
-download = require('./download'),
-sinon = require('sinon');
+var tc = require('./testContext');
+
+var context = tc.callBackContext,
+expect = tc.expect;
 
 var CallbackContext = require('../lib/CallbackContext');
-
-chai.use(require('sinon-chai'));
-
-var expect = chai.expect;
-
-
-function context(description, fn) {
-
-	it(description, function() {
-		var spy = sinon.spy();
-		fn.call(this, new CallbackContext(spy), spy);
-	});
-}
 
 describe('CallbackContext', function() {
 
@@ -39,7 +27,7 @@ describe('CallbackContext', function() {
 
 	it('invoke and throw error and call again', function() {
 		var error = new Error('A error');
-		var spy = sinon.spy(function(err, arg) {
+		var spy = tc.sinon.spy(function(err, arg) {
 			throw error;
 		});
 
