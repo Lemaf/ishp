@@ -56,7 +56,7 @@ describe('On br.shp', function() {
 	});
 
 
-	describe('Paramirim / BA (-42.23482,-41.84175,-13.55158,-13.44922)', function() {
+	describe('Érico Cardoso / BA (-42.23482,-41.84175,-13.55158,-13.44922)', function() {
 
 		var geometry = tc.factory.toGeometry(tc.factory.envelope(-42.23482,-41.84175,-13.55158,-13.44922));
 
