@@ -37,8 +37,8 @@ describe('On br.shp', function() {
 			var cities = ['São João Dos Patos', 'Barão De Grajaú', 'Sucupira Do Riachão'];
 
 			shapeFile.intersects(geometry, spy = tc.sinon.spy(tc.fix(function(err, result) {
-				if (err)
-					console.log(err.stack || err);
+				/*if (err)
+					console.log(err.stack || err);*/
 
 				expect(err).to.be.null;
 
@@ -64,12 +64,14 @@ describe('On br.shp', function() {
 		context('br.shp', 'intersects', function(shapeFile, done) {
 			var spy;
 			shapeFile.intersects(geometry, spy = tc.sinon.spy(tc.fix(function(err, response) {
-				if (err !== null)
-					console.log(err.stack || err);
+				/*if (err !== null)
+					console.log(err.stack || err);*/
 
 				expect(err).to.be.null;
 
-				console.log('callCount = %d', spy.callCount);
+				/*console.log('callCount = %d', spy.callCount);*/
+
+				//console.log(response.properties.NOME);
 
 				if (spy.callCount >= 5)
 					done();
