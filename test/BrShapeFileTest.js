@@ -31,24 +31,23 @@ describe('On br.shp', function() {
 		geometry = tc.factory.toGeometry(tc.factory.envelope(-43.43312,-43.38103,-6.64456,-6.59436));
 		context('br.shp', 'intersects', function(shapeFile, done) {
 
-			this.timeout(1000);
 
+			var expectedCities = ['São João Dos Patos', 'Barão De Grajaú', 'Sucupira Do Riachão'].sort(),
+			foundCities = [];
 
-			var cities = ['São João Dos Patos', 'Barão De Grajaú', 'Sucupira Do Riachão'];
+			var spy;
 
-			shapeFile.intersects(geometry, spy = tc.sinon.spy(tc.fix(function(err, result) {
-				/*if (err)
-					console.log(err.stack || err);*/
-
+			shapeFile.intersects(geometry, spy = tc.sinon.spy(tc.fix(function(err, feature) {
 				expect(err).to.be.null;
-
-				if (result !== null) {
-					expect(cities).to.include(result.properties.NOME);
-					cities = cities.filter(function(c) { return c !== result.properties.NOME;});
+				if (spy.callCount >= 4) {
+					expect(feature).to.be.null;
+					expect(foundCities.sort()).to.be.eql(expectedCities);
+					done();
+				} else {
+					//expect(feature).not.to.be.null;
+					foundCities.push(feature.properties.NOME);
 				}
 
-				if (spy.callCount >= 4)
-					done();
 			})));
 
 		});

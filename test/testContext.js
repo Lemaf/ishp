@@ -22,4 +22,16 @@ exports.chai = chai;
 exports.download = download;
 exports.factory = factory;
 exports.sinon = sinon;
-exports.expect = chai.expect;
+
+exports.expect = function(target, mgs) {
+	if (target && target.stack) {
+
+		if (mgs)
+			return chai.expect(target.stack, mgs);
+
+		return chai.expect(target.stack);
+	}
+
+
+	return mgs ? chai.expect(target, mgs) : chai.expect(target);
+};
