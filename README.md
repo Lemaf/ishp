@@ -28,8 +28,8 @@ ishp uses qix quadtree, you can use [mapserver](http://mapserver.org/utilities/s
 Header {
     char signature[3] = {"S","Q","T"},
     char bOrder,            // 0 - Native, 1 - Little Endian, 2 - Big Endian
-    char version,           // mapserver write 1
-    char reserved[3],       // mapserve use {0,0,0}
+    char version,           // mapserver writes 1
+    char reserved[3],       // mapserve uses {0,0,0}
     int numShapes,
     int maxDepth
 }
