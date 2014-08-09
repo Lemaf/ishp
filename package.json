@@ -16,7 +16,7 @@
   },
 
   "scripts": {
-    "test": "mocha -G -R spec test/*Test.js"
+    "test": "mocha -R progress --timeout 500 test/*Test.js"
   },
   
   "repository": {
