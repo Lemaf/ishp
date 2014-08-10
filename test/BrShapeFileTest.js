@@ -1,4 +1,4 @@
-var tc = require('./testContext');
+var tc = require('./util');
 
 var context = tc.shapeFileContext,
 expect = tc.expect;

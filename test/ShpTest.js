@@ -1,4 +1,4 @@
-var tc = require('./testContext');
+var tc = require('./util');
 
 var expect = tc.expect;
 
