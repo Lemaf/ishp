@@ -33,7 +33,7 @@ describe('On br.shp', function() {
 					expect(foundCities.sort()).to.be.eql(expectedCities);
 					done();
 				} else {
-					//expect(feature).not.to.be.null;
+					expect(feature).not.to.be.null;
 					foundCities.push(feature.properties.NOME);
 				}
 
@@ -54,7 +54,6 @@ describe('On br.shp', function() {
 			shapeFile.intersects(geometry, spy = tc.sinon.spy(tc.fix(function(err, response) {
 				/*if (err !== null)
 					console.log(err.stack || err);*/
-
 				expect(err).to.be.null;
 
 				/*console.log('callCount = %d', spy.callCount);*/
