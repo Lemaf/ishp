@@ -1,10 +1,10 @@
 # ishp
 
 
-A spatial indexed (qix quadtree) Shapefile reader
+A spatial indexed (qix file) Shapefile reader
 
 
-ishp uses qix quadtree, you can use [mapserver](http://mapserver.org/utilities/shptree.html) or [QGIS](http://www.qgis.org/) to create a qix file.
+ishp uses qix quadtree file, you can use [mapserver](http://mapserver.org/utilities/shptree.html) or [QGIS](http://www.qgis.org/) to create a qix file.
 
 
 ```js
