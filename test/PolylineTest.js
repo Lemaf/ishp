@@ -9,6 +9,14 @@ function asc(a, b) { return a - b; }
 
 describe('On lines.shp', function() {
 
+	before(tc.download([
+		{
+			url: 'https://copy.com/yzHc6aQO76ko/shp.js/lines.zip?download=1',
+			name: 'lines',
+			test: 'lines.shx'
+		}
+	]));
+
 	context('lines.shp', 'Érico Cardoso / BA (-42.23482,-41.84175,-13.55158,-13.44922)', function(shapeFile, done) {
 		var geometry = tc.factory.toGeometry(tc.factory.envelope(-42.23482,-41.84175,-13.55158,-13.44922));
 

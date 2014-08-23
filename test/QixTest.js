@@ -8,24 +8,26 @@ describe('Qix', function() {
 
 	before(tc.download([
 		{
-			url: 'https://copy.com/yzHc6aQO76ko/shp.js/br.sp.zip?download=1',
-			test: 'br.sp.shp',
-			name: 'br.sp'
-		}, {
 			url: 'https://copy.com/yzHc6aQO76ko/shp.js/br.zip?download=1',
 			test: 'br.shp',
 			name: 'br'
 		}
 	]));
 
-	context('br.sp.qix', 'Sertãozinho / SP (-48.01596,-47.95535,-21.14624,-21.09490)', function(qix, done) {
+	context('br.qix', 'Sertãozinho / SP (-48.01596,-47.95535,-21.14624,-21.09490)', function(qix, done) {
 
-		this.timeout(0);
-		var spy, foundIndexes = [], expectedIndexes = [106,185,229,276,284,356,408,441,448,487,553,576].sort(asc);
+		var spy, foundIndexes = [],
+		expectedIndexes = [
+			53,82,506,706,736,880,942,1226,1344,1348,
+			1587,1653,1744,2253,2289,2660,2944,3287,
+			3487,4068,4070,4267,4337,4341,4552,4573,
+			4787,5018,5116
+		].sort(asc);
+
 		
 		qix.query(tc.factory.envelope(-48.01596,-47.95535,-21.14624,-21.09490), spy = tc.sinon.spy(tc.fix(function(err, index) {
 
-			if (spy.callCount >= 13) {
+			if (spy.callCount >= 30) {
 				expect(err).to.be.null;
 				expect(index).to.be.null;
 				expect(foundIndexes.sort(asc)).to.eql(expectedIndexes);
