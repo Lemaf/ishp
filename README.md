@@ -13,7 +13,13 @@ ishp uses qix quadtree file, you can use [mapserver](http://mapserver.org/utilit
  
  var brazil = new ishp.ShapeFile('brazil.shp');
  
- brazil.intersects()...
+ brazil.intersects(geometry, function(err, feature) {
+   if (err)
+    console.log(err);
+   else {
+    console.log(feature.properties);
+   }
+ })...
 
 ```
 
