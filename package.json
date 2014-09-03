@@ -13,7 +13,8 @@
     "test": "test"
   },
   "scripts": {
-    "test": "mocha -R progress --timeout 500 test/*Test.js"
+    "test": "mocha -R progress --timeout 500 test/*Test.js",
+    "docs": "jsdox -o docs/ -A lib/"
   },
   "repository": {
     "type": "git",
