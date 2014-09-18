@@ -31,7 +31,6 @@
     "idbf": "*",
     "jsts": "~0.13.4",
     "js-extend": "^0.0.2",
-    "nested-error": "1.0.0",
     "promise": "^5.0.0"
   },
   "devDependencies": {
