@@ -163,7 +163,7 @@ See [jsts.geometry.Geometry.within](file:///home/rthoth.arch/GITs/jsts/doc/api/s
 
 #### <a name="options">Options</a>
 
-Property   | Default | Description
+Name       | Default | Description
 -----------|:-------:|---------------------------------------
 properties | true    | Feature with DBF content (properties)
 geometry   | true    | Feature with geometry field (JSTS Geometry)
