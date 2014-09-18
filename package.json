@@ -14,7 +14,7 @@
   },
   "scripts": {
     "test": "mocha -R progress --timeout 500 test/*Test.js",
-    "docs": "jsdox -o docs/ -A lib/"
+    "docs": "jsdox -o docs lib/"
   },
   "repository": {
     "type": "git",
@@ -38,7 +38,7 @@
     "chai": "1.9.1",
     "download": "0.1.17",
     "each-async": "0.1.3",
-    "jsdox": "0.4.1",
+    "jsdox": "git://github.com/rthoth/jsdox.git#master",
     "mocha": "1.20.1",
     "sinon-chai": "2.5.0"
   }
