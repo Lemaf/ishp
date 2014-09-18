@@ -1,4 +1,4 @@
-Global
+ishp
 ===
 
 
@@ -7,72 +7,132 @@ Global
 
 ---
 
-CallbackContext
+ishp.CallbackContext
 ===
+Callback(*Node-style*) Context Class
 
-
-CallbackContext.apply(args...) 
------------------------------
-Invoke callback with arguments in node-callback style
+*Example*
 
 ```js
 
-callbackContext.apply(1, 2, true);
-// callback function will receive null, 1, 2, true
+function callback(err, a, b) {
+  console.log("err=%s, a=%s, b=%s", err, a, b);
+}
+
+var callbackContext = new CallbackContext(callback, this);
 
 ```
 
-**Parameters**
-
-**args...**: Any, Invoke callback with arguments in node-callback style
-
-```js
-
-callbackContext.apply(1, 2, true);
-// callback function will receive null, 1, 2, true
-
-```
-
-CallbackContext.error(err) 
------------------------------
-Invoke callback only once with a error
-	
-		```js
-
-		callbackContext.error(new Error('Strange error'));
-
-		// callback will receive Error('Strange')
-
-		```
+### ishp.CallbackContext(callback, context)
 
 **Parameters**
 
-**err**: Error, Invoke callback only once with a error
-	
-		```js
+**callback**: function, 
 
-		callbackContext.error(new Error('Strange error'));
-
-		// callback will receive Error('Strange')
-
-		```
-
-CallbackContext.ok() 
------------------------------
-**Returns**: Boolean, Didn't callback receive error?
-CallbackContext.failed() 
------------------------------
-CallbackContext is failed
-
-**Returns**: Boolean, Did callback receive error?
+**context**: Object, 
 
 
 ---
 
 
 
-rthoth (@rthoth)
 
-**Overview:** teste
+ishp.CallbackContext.apply(args...) 
+-----------------------------
+
+Apply
+
+```js 
+
+callbackContext.apply(1,"two");
+
+// log
+// err=null, a=1, b=two
+
+callbackContext.apply();
+
+// log
+// err=null, a=undefined, b=undefined
+
+callbackContext.apply("true", "false", "string")
+
+// log
+// err=null, a=true, b=false
+
+```
+
+**Parameters**
+
+**args...**: Any, arguments
+
+
+
+
+
+ishp.CallbackContext.error(err) 
+-----------------------------
+
+Invoke callback with a error and never again
+
+```js
+
+callbackContext.error(new Error("A unexpected error"));
+
+// log
+// err=A unexpected error, a=undefined, b=undefined
+
+callbackContext.apply("Wakeup!", "Now!");
+
+// no log!
+
+```
+
+**Parameters**
+
+**err**: Error, Invoke callback with a error and never again
+
+```js
+
+callbackContext.error(new Error("A unexpected error"));
+
+// log
+// err=A unexpected error, a=undefined, b=undefined
+
+callbackContext.apply("Wakeup!", "Now!");
+
+// no log!
+
+```
+
+
+
+
+
+ishp.CallbackContext.ok() 
+-----------------------------
+
+Context ok?
+
+**Returns**: Boolean, 
+
+
+
+
+ishp.CallbackContext.failed() 
+-----------------------------
+
+Context failed?
+
+**Returns**: Boolean, 
+
+
+
+---
+
+
+
+@rthoth
+
+
 
 
