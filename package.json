@@ -1,6 +1,6 @@
 {
   "name": "ishp",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "author": "rthoth <ronaldo.asilva@gmail.com>",
   "description": "A spatial indexed (qix -> http://mapserver.org/utilities/shptree.html) Shapefile reader",
   "homepage": "https://github.com/rthoth/ishp",
