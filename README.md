@@ -1,4 +1,4 @@
-# ishp (**EXPERIMENTAL**)
+# ishp (**alfa**)
 
 
 A spatial indexed (qix file) Shapefile reader
