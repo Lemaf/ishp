@@ -7,12 +7,12 @@ describe('Points', function() {
 
 	before(tc.download([
 		{
-			url: 'https://copy.com/yzHc6aQO76ko/shp.js/points.zip?download=1',
+			url: 'https://copy.com/Y0KcopGoEBmfrFuT/Public/points.zip?download=1',
 			name: 'points',
 			test: 'points.shp'
 		},
 		{
-			url: 'https://copy.com/yzHc6aQO76ko/shp.js/multipoint.zip?download=1',
+			url: 'https://copy.com/Y0KcopGoEBmfrFuT/Public/multipoint.zip?download=1',
 			name: 'multipoint',
 			test: 'multipoint.shp'
 		}

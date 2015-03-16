@@ -11,7 +11,7 @@ describe('On lines.shp', function() {
 
 	before(tc.download([
 		{
-			url: 'https://copy.com/yzHc6aQO76ko/shp.js/lines.zip?download=1',
+			url: 'https://copy.com/Y0KcopGoEBmfrFuT/Public/lines.zip?download=1',
 			name: 'lines',
 			test: 'lines.shx'
 		}

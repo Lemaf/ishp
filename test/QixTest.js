@@ -8,7 +8,7 @@ describe('Qix', function() {
 
 	before(tc.download([
 		{
-			url: 'https://copy.com/yzHc6aQO76ko/shp.js/br.zip?download=1',
+			url: 'https://copy.com/Y0KcopGoEBmfrFuT/Public/br.zip?download=1',
 			test: 'br.shp',
 			name: 'br'
 		}
