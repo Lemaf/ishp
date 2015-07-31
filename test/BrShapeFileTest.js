@@ -26,7 +26,7 @@ describe('On br.shp', function() {
 
 			var spy;
 
-			shapeFile.intersects(geometry, spy = tc.sinon.spy(tc.fix(function(err, feature) {
+			shapeFile.intersects(geometry, spy = tc.sinon.spy(tc.throwAfter(function(err, feature) {
 				expect(err).to.be.null;
 				if (spy.callCount >= 4) {
 					expect(feature).to.be.null;
@@ -51,7 +51,7 @@ describe('On br.shp', function() {
 
 		context('br.shp', 'intersects', function(shapeFile, done) {
 			var spy;
-			shapeFile.intersects(geometry, spy = tc.sinon.spy(tc.fix(function(err, response) {
+			shapeFile.intersects(geometry, spy = tc.sinon.spy(tc.throwAfter(function(err, response) {
 				/*if (err !== null)
 					console.log(err.stack || err);*/
 				expect(err).to.be.null;

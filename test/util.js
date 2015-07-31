@@ -6,7 +6,7 @@ sinon = require('sinon');
 chai.use(require('sinon-chai'));
 
 
-exports.fix = function(fn) {
+exports.throwAfter = function(fn) {
 	return function() {
 		try {
 			return fn.apply(this, arguments);

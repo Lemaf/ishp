@@ -25,7 +25,7 @@ describe('Qix', function() {
 		].sort(asc);
 
 		
-		qix.query(tc.factory.envelope(-48.01596,-47.95535,-21.14624,-21.09490), spy = tc.sinon.spy(tc.fix(function(err, index) {
+		qix.query(tc.factory.envelope(-48.01596,-47.95535,-21.14624,-21.09490), spy = tc.sinon.spy(tc.throwAfter(function(err, index) {
 
 			if (spy.callCount >= 30) {
 				expect(err).to.be.null;
@@ -41,7 +41,7 @@ describe('Qix', function() {
 	});
 
 
-	context('br.qix', 'Érico Cardoso / BA (-42.23482,-41.84175,-13.55158,-13.44922)', tc.fix(function(qix, done) {
+	context('br.qix', 'Érico Cardoso / BA (-42.23482,-41.84175,-13.55158,-13.44922)', tc.throwAfter(function(qix, done) {
 		var spy;
 
 		var expectedIndexes = [
@@ -76,7 +76,7 @@ describe('Qix', function() {
 	context('br.qix', 'MA (-58.39654,-48.58000,-9.69570,0.01552)', function(qix, done) {
 		var spy, indexes = [];
 
-		qix.query(tc.factory.envelope(-58.39654,-48.58000,-9.69570,0.01552), spy = tc.sinon.spy(tc.fix(function(err, index) {
+		qix.query(tc.factory.envelope(-58.39654,-48.58000,-9.69570,0.01552), spy = tc.sinon.spy(tc.throwAfter(function(err, index) {
 			if (spy.callCount >= 200) {
 				done();
 			} else {

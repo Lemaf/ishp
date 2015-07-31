@@ -29,9 +29,9 @@
   ],
   "dependencies": {
     "idbf": "*",
-    "jsts": "~0.13.4",
+    "jsts": "~0.13",
     "js-extend": "^0.0.2",
-    "promise": "^5.0.0"
+    "promise": "^7.0.3"
   },
   "devDependencies": {
     "chai": "1.9.1",
