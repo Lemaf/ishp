@@ -24,7 +24,7 @@ describe('On lines.shp', function() {
 		expectedAges = [44],
 		foundAges = [];
 		shapeFile.intersects(geometry, spy = tc.sinon.spy(tc.throwAfter(function(err, feature) {
-			if (spy.callCount >= 3) {
+			if (spy.callCount >= 2) {
 				expect(err).to.be.null;
 				expect(feature).to.be.null;
 				expect(foundAges.sort(asc)).to.be.eql(expectedAges);
