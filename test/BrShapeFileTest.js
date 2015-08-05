@@ -68,4 +68,54 @@ describe('On br.shp', function() {
 	});
 
 
+	describe('searchRecord', function() {
+
+		context('br.shp', 'search Sertãozinho / SP', function(shapeFile, done) {
+			function filter(record, index) {
+				return record.GEOCODIGO === '3551702';
+			}
+
+			var spy;
+
+			function iterator(err, feature, index) {
+				if (spy.callCount === 1) {
+					expect(feature.properties.NOME).to.eql('Sertãozinho');
+					expect(err).to.be.null;
+				} else if (spy.callCount === 2) {
+					expect(err).to.be.not.exist;
+					expect(feature).to.be.not.exist;
+					expect(index).to.be.not.exist;
+					done();
+				}
+			}
+
+			shapeFile.searchRecord(filter, spy = tc.sinon.spy(tc.throwAfter(iterator)));
+		});
+
+
+		context('br.shp', 'search Lavras / MG with error', function(shapeFile, done) {
+
+			var error = new Error('Unexpected error!');
+
+			function filter(record, index) {
+				if (record.GEOCODIGO === '3138203')
+					throw error;
+
+				return false;
+			}
+
+			var spy = tc.sinon.spy(tc.throwAfter(function(err, feature, index) {
+				expect(err === error, 'Expected my unexpected exception \\o/').to.be.true;
+				expect(feature).to.not.exist;
+				expect(index).to.not.exist;
+				done();
+			}));
+
+
+			shapeFile.searchRecord(filter, spy);
+
+		});
+	});
+
+
 });
