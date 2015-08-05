@@ -34,11 +34,10 @@
     "promise": "^7.0.3"
   },
   "devDependencies": {
-    "chai": "1.9.1",
-    "download": "0.1.17",
-    "each-async": "0.1.3",
-    "jsdox": "git://github.com/rthoth/jsdox.git#master",
-    "mocha": "1.20.1",
-    "sinon-chai": "2.5.0"
+    "chai": "3.2.0",
+    "download": "4.2.0",
+    "each-async": "1.1.1",
+    "mocha": "2.2.5",
+    "sinon-chai": "2.8.0"
   }
 }
