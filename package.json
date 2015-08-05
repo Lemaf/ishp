@@ -1,11 +1,11 @@
 {
   "name": "ishp",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "author": "rthoth <ronaldo.asilva@gmail.com>",
   "description": "A spatial indexed (qix -> http://mapserver.org/utilities/shptree.html) Shapefile reader",
-  "homepage": "https://github.com/rthoth/ishp",
+  "homepage": "https://github.com/Lemaf/ishp",
   "bugs": {
-    "url": "https://github.com/rthoth/ishp/issues"
+    "url": "https://github.com/Lemaf/ishp/issues"
   },
   "main": "index.js",
   "license": "MIT",
@@ -18,7 +18,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/rthoth/ishp.git"
+    "url": "https://github.com/Lemaf/ishp.git"
   },
   "keywords": [
     "shp",

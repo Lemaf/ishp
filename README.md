@@ -23,6 +23,6 @@ ishp uses qix quadtree file, you can use [mapserver](http://mapserver.org/utilit
 
 ```
 
-# [References](https://github.com/rthoth/ishp/wiki)
-* [ShapeFile](https://github.com/rthoth/ishp/wiki/ShapeFile-Reference)
-* [Qix format](https://github.com/rthoth/ishp/wiki/Qix-Format)
+# [References](https://github.com/Lemaf/ishp/wiki)
+* [ShapeFile](https://github.com/Lemaf/ishp/wiki/ShapeFile-Reference)
+* [Qix format](https://github.com/Lemaf/ishp/wiki/Qix-Format)
