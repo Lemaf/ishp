@@ -2,7 +2,7 @@
   "name": "ishp",
   "version": "1.0.0",
   "author": "rthoth <ronaldo.asilva@gmail.com>",
-  "description": "A spatial indexed (qix -> http://mapserver.org/utilities/shptree.html) Shapefile reader",
+  "description": "A spatial indexed (qix) Shapefile reader",
   "homepage": "https://github.com/Lemaf/ishp",
   "bugs": {
     "url": "https://github.com/Lemaf/ishp/issues"
