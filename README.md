@@ -1,6 +1,8 @@
 # ishp
 
 ---
+
+[![Build Status](https://travis-ci.org/Lemaf/ishp.svg?branch=master)](https://travis-ci.org/Lemaf/ishp)
 [![Dependency Status](https://david-dm.org/Lemaf/ishp.png)](https://david-dm.org/Lemaf/ishp)
 [![devDependency Status](https://david-dm.org/Lemaf/ishp/dev-status.png)](https://david-dm.org/Lemaf/ishp#info=devDependencies)
 
