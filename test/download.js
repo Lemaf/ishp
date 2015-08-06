@@ -26,14 +26,18 @@ module.exports = function(downloads) {
 				next();
 			else {
 				console.log('downloading %s from %s', source.name, source.url);
-				download(source, dest, {extract: true})
-					.on('error', function(err) {
-						next(err);
-					})
-					.on('close', function() {
-						next();
-					})
-				;
+				/*
+					download(source, dest, {extract: true})
+						.on('error', function(err) {
+							next(err);
+						})
+						.on('close', function() {
+							next();
+						});
+				*/
+				new download({extract: true}).get(source.url).dest(dest).run(function(err, files) {
+					next(err);
+				});
 			}
 		}, function(err) {
 			if (err)
