@@ -1,6 +1,8 @@
 # ishp
 
 ---
+[![Dependency Status](https://david-dm.org/Lemaf/ishp.png)](https://david-dm.org/Lemaf/ishp)
+[![devDependency Status](https://david-dm.org/Lemaf/ishp/dev-status.png)](https://david-dm.org/Lemaf/ishp#info=devDependencies)
 
 A spatial indexed (qix file) Shapefile reader.
 
